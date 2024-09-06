@@ -70,6 +70,24 @@
       "url_encoded": false
     }
   },
+  "Echo Jellyfin": {
+      "name": "app-debug.apk",
+      "type": "artifact",
+      "identifier": {
+        "latest": "0920b6953a9768a0c4f33d029f2d893ade4d2448",
+        "enum_limit": 0,
+        "increment_limit": 0,
+        "pattern": "\\/([a-zA-Z0-9]+)\\.zip"
+      },
+      "url": "https://github.com/Secozzi/echo-jellyfin-extension/actions/workflows/build.yml?query=branch%3Amain",
+      "agent": null,
+      "patterns": [
+        "artifact",
+        "app-debug\\.apk"
+      ],
+      "url_encoded": false
+    }
+  },
   "wait_time": 15,
   "webhook": {
     "enabled": false,

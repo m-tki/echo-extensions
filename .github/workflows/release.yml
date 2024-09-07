@@ -20,8 +20,12 @@ jobs:
               id: set-vars
               run: |
                   apk_path=$(ls -S out/*.apk | head -n 1)
+                  if [[ -z "$apk_path" ]]; then
+                      echo "Error: No APK file found."
+                      exit 1
+                  fi
                   echo "APK_PATH=$apk_path" >> $GITHUB_ENV
-                  
+
                   # Check if settings.json exists and is readable
                   if [[ -f settings.json ]]; then
                       # Extract latest version for "Echo Youtube" from settings.json

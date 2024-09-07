@@ -99,7 +99,7 @@ jobs:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Create Release
-              uses: softprops/action-gh-release@v1
+              uses: softprops/action-gh-release@v2
               with:
                   files: ${{ env.APK_PATH }}
                   tag_name: ${{ steps.apk-info.outputs.version-name }}

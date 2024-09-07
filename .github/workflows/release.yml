@@ -11,16 +11,23 @@ jobs:
             - name: Checkout Repository
               uses: actions/checkout@v4
 
+            - name: Run Main.go
+              id: run-main
+              run: |
+                  go run ./src/main.go --token="${{ secrets.GITHUB_TOKEN }}"
+
             - name: Set Environment Variables
               id: set-vars
               run: |
-                  # Assume version-name is derived from apk-info action
-                  tag_name="${{ steps.apk-info.outputs.version-name }}"
-                  if [[ -z "$tag_name" ]]; then
-                      echo "TAG_NAME is empty. Please check the source of the tag name."
-                      exit 1
-                  fi
-                  echo "TAG_NAME=$tag_name" >> $GITHUB_ENV
+                  apk_path=$(ls -S out/*.apk | head -n 1)
+                  version_name=$(jq -r '.webhook.version_name' settings.json) # Adjust based on actual JSON structure
+                  echo "APK_PATH=$apk_path" >> $GITHUB_ENV
+                  echo "TAG_NAME=$version_name" >> $GITHUB_ENV
+
+            - name: Debug Environment Variables
+              run: |
+                  echo "APK_PATH=${{ env.APK_PATH }}"
+                  echo "TAG_NAME=${{ env.TAG_NAME }}"
 
             - name: Create Tag if Not Exists
               id: create-tag

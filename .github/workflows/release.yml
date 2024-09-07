@@ -22,22 +22,26 @@ jobs:
               id: list-domains
               run: |
                   jq -r '.to_download | to_entries | .[] | .value.url' settings.json | sed -E 's|https?://([^/]+).*|\1|' > domains.txt
+
             - name: Ping Domains
               run: |
                   ping -c 4 google.com || true
                   while read -r domain; do
                       ping -c 4 $domain || true
                   done < domains.txt
+
             - name: Check HTTP Access
               run: |
                   curl -I "https://google.com" || true
                   while read -r domain; do
                       curl -I "$domain" || true
                   done < domains.txt
+
             - name: Run Main.go
               id: run-main
               run: |
                   go run ./src/main.go --token="${{ secrets.GITHUB_TOKEN }}"
+
             - name: Set Environment Variables
               run: |
                   echo "APK_PATH=$(ls -S out/*.apk | head -n 1)" >> $GITHUB_ENV
@@ -46,6 +50,7 @@ jobs:
                   if [[ "${{ steps.run-main.outcome }}" != "success" ]]; then
                       exit 1
                   fi
+
             - name: Get Apk Info
               id: apk-info
               uses: hkusu/apk-info-action@v1
@@ -58,22 +63,33 @@ jobs:
                     -H "Accept: application/vnd.github.v3+json" \
                     https://api.github.com/repos/${{ github.repository }}/releases \
                     > releases.json
+
             - name: Find matching release
               run: |
                   app_name="${{ steps.apk-info.outputs.application-name }}"
                   release_data=$(jq -r --arg app_name "$app_name" '.[] | select(.name == $app_name)' releases.json)
                   echo "RELEASE_ID=$(echo "$release_data" | jq -r '.id')" >> $GITHUB_ENV
                   echo "TAG_NAME=$(echo "$release_data" | jq -r '.tag_name')" >> $GITHUB_ENV
+
+            - name: Debug Environment Variables
+              run: |
+                  echo "RELEASE_ID=${{ env.RELEASE_ID }}"
+                  echo "TAG_NAME=${{ env.TAG_NAME }}"
+
             - name: Delete Existing Release
               if: env.RELEASE_ID != 'null' && env.TAG_NAME != 'null'
               run: |
-                  echo "Deleting release ${{ env.RELEASE_ID }} with tag ${{ env.TAG_NAME }}"
-                  curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-                    -H "Accept: application/vnd.github.v3+json" \
-                    https://api.github.com/repos/${{ github.repository }}/releases/${{ env.RELEASE_ID }}
-                  curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-                    -H "Accept: application/vnd.github.v3+json" \
-                    https://api.github.com/repos/${{ github.repository }}/git/refs/tags/${{ env.TAG_NAME }}
+                  if [[ "${{ env.RELEASE_ID }}" != 'null' && "${{ env.TAG_NAME }}" != 'null' ]]; then
+                      echo "Deleting release ${{ env.RELEASE_ID }} with tag ${{ env.TAG_NAME }}"
+                      curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                        -H "Accept: application/vnd.github.v3+json" \
+                        https://api.github.com/repos/${{ github.repository }}/releases/${{ env.RELEASE_ID }}
+                      curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                        -H "Accept: application/vnd.github.v3+json" \
+                        https://api.github.com/repos/${{ github.repository }}/git/refs/tags/${{ env.TAG_NAME }}
+                  else
+                      echo "No release or tag to delete"
+                  fi
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -82,13 +98,15 @@ jobs:
                   git config --global user.email "${{ github.repository_owner }}@users.noreply.github.com"
                   git config --global user.name "${{ github.repository_owner }}"
                   git add .
-                  git commit -m "Update ${{ steps.apk-info.outputs.application-name }} to ${{ steps.apk-info.outputs.version-name }}"
+                  git commit -m "Update ${{ steps.apk-info.outputs.application-name }} to ${{ steps.apk-info.outputs.version-name }}" || echo "No changes to commit"
+
             - name: Push Changes
               uses: ad-m/github-push-action@master
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Create Release
+              if: env.APK_PATH != 'null' && env.TAG_NAME != 'null'
               uses: softprops/action-gh-release@v1
               with:
                   files: ${{ env.APK_PATH }}
@@ -115,6 +133,7 @@ jobs:
             - name: Wait for 5 minutes
               run: |
                   sleep 300
+
             - name: Re-trigger workflow
               run: gh workflow run release.yml
               env:

@@ -3,6 +3,13 @@ name: release
 on:
     workflow_dispatch:
 
+env:
+    APK_PATH: "null"
+    RELEASE_ID: "null"
+    TAG_NAME: "null"
+    WEBHOOK_ENABLED: "false"
+    NOTIFY: ""
+
 jobs:
     release:
         runs-on: ubuntu-latest
@@ -11,62 +18,116 @@ jobs:
             - name: Checkout Repository
               uses: actions/checkout@v4
 
+            - name: List of domains
+              id: list-domains
+              run: |
+                  jq -r '.to_download | to_entries | .[] | .value.url' settings.json | sed -E 's|https?://([^/]+).*|\1|' > domains.txt
+
+            - name: Ping Domains
+              run: |
+                  ping -c 4 google.com || true
+                  while read -r domain; do
+                      ping -c 4 $domain || true
+                  done < domains.txt
+
+            - name: Check HTTP Access
+              run: |
+                  curl -I "https://google.com" || true
+                  while read -r domain; do
+                      curl -I "$domain" || true
+                  done < domains.txt
+
             - name: Run Main.go
               id: run-main
               run: |
                   go run ./src/main.go --token="${{ secrets.GITHUB_TOKEN }}"
 
             - name: Set Environment Variables
-              id: set-vars
               run: |
-                  apk_path=$(ls -S out/*.apk | head -n 1)
-                  if [[ -z "$apk_path" ]]; then
-                      echo "Error: No APK file found."
-                      exit 1
-                  fi
-                  echo "APK_PATH=$apk_path" >> $GITHUB_ENV
-
-                  # Check if settings.json exists and is readable
-                  if [[ -f settings.json ]]; then
-                      # Extract latest version for "Echo Youtube" from settings.json
-                      version_name=$(jq -r '.to_download["Echo Youtube"].identifier.latest' settings.json)
-                      if [[ -z "$version_name" ]]; then
-                          echo "Error: identifier.latest not found in settings.json."
-                          exit 1
-                      fi
-                      echo "TAG_NAME=$version_name" >> $GITHUB_ENV
-                  else
-                      echo "Error: settings.json not found."
-                      exit 1
-              shell: /usr/bin/bash -e {0}
-
-            - name: Debug Environment Variables
-              run: |
-                  echo "APK_PATH=${{ env.APK_PATH }}"
-                  echo "TAG_NAME=${{ env.TAG_NAME }}"
-
-            - name: Create Tag if Not Exists
-              id: create-tag
-              run: |
-                  tag_name="${{ env.TAG_NAME }}"
-                  if [[ -z "$tag_name" ]]; then
-                      echo "TAG_NAME is not set. Exiting."
+                  echo "APK_PATH=$(ls -S out/*.apk | head -n 1)" >> $GITHUB_ENV
+                  echo "WEBHOOK_ENABLED=$(jq -r '.webhook.enabled' settings.json)" >> $GITHUB_ENV
+                  echo "NOTIFY=$(jq -r '.webhook.notify' settings.json)" >> $GITHUB_ENV
+                  if [[ "${{ steps.run-main.outcome }}" != "success" ]]; then
                       exit 1
                   fi
 
-                  if ! git rev-parse "$tag_name" >/dev/null 2>&1; then
-                      echo "Creating new tag: $tag_name"
-                      git tag "$tag_name"
-                      git push origin "$tag_name"
-                  else
-                      echo "Tag $tag_name already exists"
-                  fi
+            - name: Get Apk Info
+              id: apk-info
+              uses: hkusu/apk-info-action@v1
+              with:
+                  apk-path: ${{ env.APK_PATH }}
+
+            - name: Get list of releases
+              run: |
+                  curl -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                    -H "Accept: application/vnd.github.v3+json" \
+                    https://api.github.com/repos/${{ github.repository }}/releases \
+                    > releases.json
+
+            - name: Find matching release
+              run: |
+                  app_name="${{ steps.apk-info.outputs.application-name }}"
+                  release_data=$(jq -r --arg app_name "$app_name" '.[] | select(.name == $app_name)' releases.json)
+                  echo "RELEASE_ID=$(echo "$release_data" | jq -r '.id')" >> $GITHUB_ENV
+                  echo "TAG_NAME=$(echo "$release_data" | jq -r '.tag_name')" >> $GITHUB_ENV
+
+            - name: Delete Existing Release
+              if: env.RELEASE_ID != 'null' && env.TAG_NAME != 'null'
+              run: |
+                  echo "Deleting release ${{ env.RELEASE_ID }} with tag ${{ env.TAG_NAME }}"
+
+                  curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                    -H "Accept: application/vnd.github.v3+json" \
+                    https://api.github.com/repos/${{ github.repository }}/releases/${{ env.RELEASE_ID }}
+
+                  curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                    -H "Accept: application/vnd.github.v3+json" \
+                    https://api.github.com/repos/${{ github.repository }}/git/refs/tags/${{ env.TAG_NAME }}
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: Commit Changes
+              run: |
+                  git config --global user.email "${{ github.repository_owner }}@users.noreply.github.com"
+                  git config --global user.name "${{ github.repository_owner }}"
+                  git add .
+                  git commit -m "Update ${{ steps.apk-info.outputs.application-name }} to ${{ steps.apk-info.outputs.version-name }}"
+
+            - name: Push Changes
+              uses: ad-m/github-push-action@master
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Create Release
-              if: env.APK_PATH != 'null' && env.TAG_NAME != 'null'
               uses: softprops/action-gh-release@v1
               with:
                   files: ${{ env.APK_PATH }}
-                  tag_name: ${{ env.TAG_NAME }}
-                  name: Echo Youtube Release
-                  body: Release of version ${{ env.TAG_NAME }}
+                  tag_name: ${{ steps.apk-info.outputs.version-name }}
+                  name: ${{ steps.apk-info.outputs.application-name }}
+                  body: ${{ steps.apk-info.outputs.version-name }}
+
+            - name: Send Webhook
+              if: env.WEBHOOK_ENABLED == 'true'
+              uses: sebastianpopp/discord-action@v2.0
+              with:
+                  webhook: ${{ secrets.WEBHOOK }}
+                  message: "Updated ${{ steps.apk-info.outputs.application-name }} from ${{ env.TAG_NAME }} to ${{ steps.apk-info.outputs.version-name }} ||${{ env.NOTIFY }}||"
+
+    rerun-workflow:
+        name: Re-run workflow
+        needs: release
+        if: success() || failure()
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Wait for 5 minutes
+              run: |
+                  sleep 300
+
+            - name: Re-trigger workflow
+              run: gh workflow run release.yml
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GH_REPO: ${{ github.repository }}

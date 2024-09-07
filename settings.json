@@ -7,7 +7,7 @@
         "latest": "a",
         "enum_limit": 0,
         "increment_limit": 0,
-        "pattern": "\\/([a-zA-Z0-9]+)\\.zip"
+        "pattern": "/(\\w+-\\w+-\\w+-\\w+-\\w+)/"
       },
       "url": "https://github.com/LuftVerbot/echo-deezer-extension/actions/workflows/build.yml?query=branch%3Amain",
       "agent": null,
@@ -24,7 +24,7 @@
         "latest": "a",
         "enum_limit": 0,
         "increment_limit": 0,
-        "pattern": "\\/([a-zA-Z0-9]+)\\.zip"
+        "pattern": "/(\\w+-\\w+-\\w+-\\w+-\\w+)/"
       },
       "url": "https://github.com/brahmkshatriya/echo-discord/actions/workflows/build.yml?query=branch%3Amain",
       "agent": null,
@@ -41,7 +41,7 @@
         "latest": "a",
         "enum_limit": 0,
         "increment_limit": 0,
-        "pattern": "\\/([a-zA-Z0-9]+)\\.zip"
+        "pattern": "/(\\w+-\\w+-\\w+-\\w+-\\w+)/"
       },
       "url": "https://github.com/brahmkshatriya/echo-youtube-extension/actions/workflows/build.yml?query=branch%3Amain",
       "agent": null,
@@ -59,7 +59,7 @@
         "latest": "a",
         "enum_limit": 0,
         "increment_limit": 0,
-        "pattern": "\\/([a-zA-Z0-9]+)\\.zip"
+        "pattern": "/(\\w+-\\w+-\\w+-\\w+-\\w+)/"
       },
       "url": "https://github.com/rebelonion/echo-lastfm/actions/workflows/build.yml?query=branch%3Amain",
       "agent": null,
@@ -77,7 +77,7 @@
         "latest": "a",
         "enum_limit": 0,
         "increment_limit": 0,
-        "pattern": "\\/([a-zA-Z0-9]+)\\.zip"
+        "pattern": "/(\\w+-\\w+-\\w+-\\w+-\\w+)/"
       },
       "url": "https://github.com/Secozzi/echo-jellyfin-extension/actions/workflows/build.yml?query=branch%3Amain",
       "agent": null,

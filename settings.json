@@ -50,27 +50,22 @@
         "app-debug\\.apk"
       ],
       "url_encoded": false
-    }
-  },
-  "Echo LastFM": {
-      "name": "app-debug.apk",
-      "type": "artifact",
+    },
+    "Echo Lastfm": {
+      "name": "app-release.apk",
+      "type": "enumeration",
       "identifier": {
         "latest": "a",
-        "enum_limit": 0,
-        "increment_limit": 0,
+        "enum_limit": 500,
+        "increment_limit": 999,
         "pattern": "/(\\w+-\\w+-\\w+-\\w+-\\w+)/"
       },
       "url": "https://github.com/rebelonion/echo-lastfm/actions/workflows/build.yml?query=branch%3Amain",
       "agent": null,
-      "patterns": [
-        "artifact",
-        "app-debug\\.apk"
-      ],
+      "patterns": null,
       "url_encoded": false
-    }
-  },
-  "Echo Jellyfin": {
+    },
+    "Echo Jellyfin": {
       "name": "app-debug.apk",
       "type": "artifact",
       "identifier": {

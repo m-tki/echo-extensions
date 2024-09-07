@@ -20,9 +20,21 @@ jobs:
               id: set-vars
               run: |
                   apk_path=$(ls -S out/*.apk | head -n 1)
-                  version_name=$(jq -r '.webhook.version_name' settings.json) # Adjust based on actual JSON structure
                   echo "APK_PATH=$apk_path" >> $GITHUB_ENV
-                  echo "TAG_NAME=$version_name" >> $GITHUB_ENV
+                  
+                  # Check if settings.json exists and is readable
+                  if [[ -f settings.json ]]; then
+                      # Extract latest version for "Echo Youtube" from settings.json
+                      version_name=$(jq -r '.to_download["Echo Youtube"].identifier.latest' settings.json)
+                      if [[ -z "$version_name" ]]; then
+                          echo "Error: identifier.latest not found in settings.json."
+                          exit 1
+                      fi
+                      echo "TAG_NAME=$version_name" >> $GITHUB_ENV
+                  else
+                      echo "Error: settings.json not found."
+                      exit 1
+              shell: /usr/bin/bash -e {0}
 
             - name: Debug Environment Variables
               run: |
@@ -52,5 +64,5 @@ jobs:
               with:
                   files: ${{ env.APK_PATH }}
                   tag_name: ${{ env.TAG_NAME }}
-                  name: ${{ steps.apk-info.outputs.application-name }}
-                  body: ${{ steps.apk-info.outputs.version-name }}
+                  name: Echo Youtube Release
+                  body: Release of version ${{ env.TAG_NAME }}

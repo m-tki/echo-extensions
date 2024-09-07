@@ -4,7 +4,7 @@
       "name": "app-debug.apk",
       "type": "artifact",
       "identifier": {
-        "latest": "c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c",
+        "latest": "a",
         "enum_limit": 0,
         "increment_limit": 0,
         "pattern": "\\/([a-zA-Z0-9]+)\\.zip"
@@ -21,7 +21,7 @@
       "name": "app-debug.apk",
       "type": "artifact",
       "identifier": {
-        "latest": "c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c",
+        "latest": "a",
         "enum_limit": 0,
         "increment_limit": 0,
         "pattern": "\\/([a-zA-Z0-9]+)\\.zip"
@@ -38,7 +38,7 @@
       "name": "app-debug.apk",
       "type": "artifact",
       "identifier": {
-        "latest": "c7c5c1d70c5dec4416ab6158afd0b223ef40c29b1dc1f97ed9428b94d4cadb1c",
+        "latest": "a",
         "enum_limit": 0,
         "increment_limit": 0,
         "pattern": "\\/([a-zA-Z0-9]+)\\.zip"
@@ -56,7 +56,7 @@
       "name": "app-debug.apk",
       "type": "artifact",
       "identifier": {
-        "latest": "ec16fb7b2462c949cc0cec2eb1911a2ed0204bb5",
+        "latest": "a",
         "enum_limit": 0,
         "increment_limit": 0,
         "pattern": "\\/([a-zA-Z0-9]+)\\.zip"
@@ -74,7 +74,7 @@
       "name": "app-debug.apk",
       "type": "artifact",
       "identifier": {
-        "latest": "0920b6953a9768a0c4f33d029f2d893ade4d2448",
+        "latest": "a",
         "enum_limit": 0,
         "increment_limit": 0,
         "pattern": "\\/([a-zA-Z0-9]+)\\.zip"

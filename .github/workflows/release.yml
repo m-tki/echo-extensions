@@ -76,6 +76,18 @@ jobs:
                   echo "RELEASE_ID=${{ env.RELEASE_ID }}"
                   echo "TAG_NAME=${{ env.TAG_NAME }}"
 
+            - name: Create Tag if Not Exists
+              id: create-tag
+              run: |
+                  tag_name="${{ steps.apk-info.outputs.version-name }}"
+                  if ! git rev-parse "$tag_name" >/dev/null 2>&1; then
+                      echo "Creating new tag: $tag_name"
+                      git tag "$tag_name"
+                      git push origin "$tag_name"
+                  else
+                      echo "Tag $tag_name already exists"
+                  fi
+
             - name: Delete Existing Release
               if: env.RELEASE_ID != 'null' && env.TAG_NAME != 'null'
               run: |

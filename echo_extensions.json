@@ -2,63 +2,63 @@
   {
     "id": "deezer",
     "name": "Deezer",
-    "subtitle": "Deezer Extension for Echo",
+    "subtitle": "Play music from Deezer on Echo",
     "iconUrl": "https://e-cdn-files.dzcdn.net/cache/images/common/favicon/favicon-240x240.bb3a6a29ad16a77f10cb.png",
     "updateUrl": "https://api.github.com/repos/LuftVerbot/echo-deezer-extension/releases"
   },
   {
     "id": "discord-rpc",
     "name": "Discord RPC",
-    "subtitle": "Show music you listen to, on Discord",
+    "subtitle": "Show the music you're listening to on Discord",
     "iconUrl": "https://yt3.googleusercontent.com/ytc/AIdro_lBFnWS0XsOc_PbUCpWpTTUtcUa3CJNO8oXqrjnc9IA_A4=s176-c-k-c0x00ffffff-no-rj-mo",
     "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-discord/releases"
   },
   {
     "id": "echodown",
     "name": "Downloader",
-    "subtitle": "Downloader Extension for Echo",
+    "subtitle": "Download your music to Echo",
     "iconUrl": "https://cdn-images.dzcdn.net/images/cover/00e78b6d932527f79d2df3f4f694510b/264x264-000000-80-0-0.jpg",
     "updateUrl": "https://api.github.com/repos/LuftVerbot/echo-echodown-extension/releases"
   },
   {
     "id": "genius_lyrics",
     "name": "Genius",
-    "subtitle": "Genius Extension for Echo",
+    "subtitle": "View lyrics with Genius on Echo",
     "iconUrl": "https://play-lh.googleusercontent.com/e6-dZlTM-gJ2sFxFFs3X15O84HEv6jc9PQGgHtVTn7FP6lUXeEAkDl9v4RfVOwbSuQ=w480-h960-rw",
     "updateUrl": "https://api.github.com/repos/shub39/echo-genius-extension/releases"
   },
   {
     "id": "kugou_lyrics",
     "name": "Kugou",
-    "subtitle": "Kugou Extension for Echo",
+    "subtitle": "View lyrics with Kugou on Echo",
     "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e9/KuGou_app_icon.png",
     "updateUrl": "https://api.github.com/repos/shub39/echo-kugou-extension/releases"
   },
   {
     "id": "lastfm",
     "name": "Lastfm",
-    "subtitle": "Lastfm Extension for Echo",
+    "subtitle": "Sync the music you play on Echo with Lastfm",
     "iconUrl": "https://i.imgur.com/ArKIJYv.png",
     "updateUrl": "https://api.github.com/repos/rebelonion/echo-lastfm/releases"
   },
   {
     "id": "lrclib_lyrics",
     "name": "Lrclib",
-    "subtitle": "Lrclib Extension for Echo",
+    "subtitle": "View lyrics with Lrclib on Echo",
     "iconUrl": "https://lrclib.net/assets/lrclib-370c57eb.png",
     "updateUrl": "https://api.github.com/repos/shub39/echo-lrclib-extension/releases"
   },
   {
     "id": "spotify",
     "name": "Spotify",
-    "subtitle": "Spotify Extension for Echo",
+    "subtitle": "Play music from Spotify on Echo",
     "iconUrl": "https://static-00.iconduck.com/assets.00/spotify-icon-512x512-6qhm38iz.png",
     "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-spotify-extension/releases"
   },
   {
     "id": "youtube-music",
     "name": "Youtube Music",
-    "subtitle": "Play youtube music on Echo",
+    "subtitle": "Play music from Youtube on Echo",
     "iconUrl": "https://music.youtube.com/img/favicon_144.png",
     "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-youtube-extension/releases"
   }

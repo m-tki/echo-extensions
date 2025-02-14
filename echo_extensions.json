@@ -16,7 +16,7 @@
   {
     "id": "echodown",
     "name": "Downloader",
-    "subtitle": "Download your music to Echo",
+    "subtitle": "Download your music with Echo",
     "iconUrl": "https://cdn-images.dzcdn.net/images/cover/00e78b6d932527f79d2df3f4f694510b/264x264-000000-80-0-0.jpg",
     "updateUrl": "https://api.github.com/repos/LuftVerbot/echo-echodown-extension/releases"
   },

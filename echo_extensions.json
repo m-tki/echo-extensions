@@ -49,6 +49,13 @@
     "updateUrl": "https://api.github.com/repos/shub39/echo-lrclib-extension/releases"
   },
   {
+    "id": "musixmatch_lyrics",
+    "name": "Musixmatch",
+    "subtitle": "View lyrics with Musixmatch on Echo",
+    "iconUrl": "https://yt3.ggpht.com/48S87o5wuuj73a-CBKZgJOKebDzIoey0qsBJ1o5sr7ihJ7VDwfBkukMuKnTMj1j4ZK5WltN0=s176-c-k-c0x00ffffff-no-rj-mo",
+    "updateUrl": "https://api.github.com/repos/shub39/echo-musixmatch-extension/releases"
+  },
+  {
     "id": "spotify",
     "name": "Spotify",
     "subtitle": "Play music from Spotify on Echo",

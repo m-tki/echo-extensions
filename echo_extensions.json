@@ -80,6 +80,14 @@
     "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-spotify-extension/releases"
   },
   {
+    "id": "Tunein",
+    "type": "music",
+    "name": "Tunein",
+    "subtitle": "Play radio from Tunein on Echo",
+    "iconUrl": "https://tunein.com/favicon.ico",
+    "updateUrl": "https://api.github.com/repos/GrimXer0/EchoTuneIn-extension/releases"
+  },
+  {
     "id": "youtube-music",
     "type": "music",
     "name": "Youtube Music",

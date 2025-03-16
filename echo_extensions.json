@@ -64,6 +64,14 @@
     "updateUrl": "https://api.github.com/repos/shub39/echo-lrclib-extension/releases"
   },
   {
+    "id": "lyricstranslator",
+    "type": "lyrics",
+    "name": "Lyrics Translator",
+    "subtitle": "Translate lyrics with Lyrics Translator on Echo",
+    "iconUrl": "https://i.imgur.com/Lv07pqy.png",
+    "updateUrl": "https://api.github.com/repos/rebelonion/echo-lyrics-translator/releases"
+  },
+  {
     "id": "musixmatch_lyrics",
     "type": "lyrics",
     "name": "Musixmatch",

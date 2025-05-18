@@ -32,6 +32,14 @@
     "updateUrl": "https://api.github.com/repos/LuftVerbot/echo-echodown-extension/releases"
   },
   {
+    "id": "echo-jellyfin",
+    "type": "music",
+    "name": "Jellyfin",
+    "subtitle": "Stream music from your Jellyfin server on Echo",
+    "iconUrl": "https://i.imgur.com/VFPYs2e.png",
+    "updateUrl": "https://api.github.com/repos/Secozzi/echo-jellyfin-extension/releases"
+  },
+  {
     "id": "genius_lyrics",
     "type": "lyrics",
     "name": "Genius",
@@ -76,7 +84,7 @@
     "type": "lyrics",
     "name": "Musixmatch",
     "subtitle": "View lyrics with Musixmatch on Echo",
-    "iconUrl": "https://yt3.ggpht.com/48S87o5wuuj73a-CBKZgJOKebDzIoey0qsBJ1o5sr7ihJ7VDwfBkukMuKnTMj1j4ZK5WltN0=s176-c-k-c0x00ffffff-no-rj-mo",
+    "iconUrl": "https://yt3.g nc9PQGgHtVTn7FP6lUXeEAkDl9v4RfVOwbSuQ=w480-h960-rw",
     "updateUrl": "https://api.github.com/repos/shub39/echo-musixmatch-extension/releases"
   },
   {

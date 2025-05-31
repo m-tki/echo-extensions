@@ -3,9 +3,17 @@
     "id": "asmrone",
     "type": "music",
     "name": "AsmrOne",
-    "subtitle": "Play asmr from AsmrOne on Echo",
+    "subtitle": "Play ASMR from AsmrOne on Echo",
     "iconUrl": "https://i.imgur.com/CXQJEvA.png",
     "updateUrl": "https://api.github.com/repos/rebelonion/echo-asmr-one/releases"
+  },
+  {
+    "id": "cineby",
+    "type": "music",
+    "name": "Cineby",
+    "subtitle": "Stream music from your favorite movies and shows with Cineby on Echo",
+    "iconUrl": "https://www.cineby.app/logo.png",
+    "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-cineby-extension/releases"
   },
   {
     "id": "deezer",

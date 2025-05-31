@@ -11,7 +11,7 @@
     "id": "cineby",
     "type": "music",
     "name": "Cineby",
-    "subtitle": "Stream music from your favorite movies and shows with Cineby on Echo",
+    "subtitle": "Play movies and shows from Cineby on Echo",
     "iconUrl": "https://www.cineby.app/logo.png",
     "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-cineby-extension/releases"
   },

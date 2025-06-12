@@ -1,0 +1,122 @@
+[
+  {
+    "id": "asmrone",
+    "type": "music",
+    "name": "AsmrOne",
+    "subtitle": "Play ASMR from AsmrOne on Echo",
+    "iconUrl": "https://i.imgur.com/CXQJEvA.png",
+    "updateUrl": "https://api.github.com/repos/rebelonion/echo-asmr-one/releases"
+  },
+  {
+    "id": "cineby",
+    "type": "music",
+    "name": "Cineby",
+    "subtitle": "Play movies and shows from Cineby on Echo",
+    "iconUrl": "https://www.cineby.app/logo.png",
+    "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-cineby-extension/releases"
+  },
+  {
+    "id": "deezer",
+    "type": "music",
+    "name": "Deezer",
+    "subtitle": "Play music from Deezer on Echo",
+    "iconUrl": "https://e-cdn-files.dzcdn.net/cache/images/common/favicon/favicon-240x240.bb3a6a29ad16a77f10cb.png",
+    "updateUrl": "https://api.github.com/repos/LuftVerbot/echo-deezer-extension/releases"
+  },
+  {
+    "id": "discord-rpc",
+    "type": "tracker",
+    "name": "Discord RPC",
+    "subtitle": "Show the music you're listening to on Discord",
+    "iconUrl": "https://yt3.googleusercontent.com/ytc/AIdro_lBFnWS0XsOc_PbUCpWpTTUtcUa3CJNO8oXqrjnc9IA_A4=s176-c-k-c0x00ffffff-no-rj-mo",
+    "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-discord/releases"
+  },
+  {
+    "id": "echodown",
+    "type": "misc",
+    "name": "Downloader",
+    "subtitle": "Download your music with Echo",
+    "iconUrl": "https://cdn-images.dzcdn.net/images/cover/00e78b6d932527f79d2df3f4f694510b/264x264-000000-80-0-0.jpg",
+    "updateUrl": "https://api.github.com/repos/LuftVerbot/echo-echodown-extension/releases"
+  },
+  {
+    "id": "echo-jellyfin",
+    "type": "music",
+    "name": "Jellyfin",
+    "subtitle": "Stream music from your Jellyfin server on Echo",
+    "iconUrl": "https://i.imgur.com/VFPYs2e.png",
+    "updateUrl": "https://api.github.com/repos/Secozzi/echo-jellyfin-extension/releases"
+  },
+  {
+    "id": "genius_lyrics",
+    "type": "lyrics",
+    "name": "Genius",
+    "subtitle": "View lyrics with Genius on Echo",
+    "iconUrl": "https://play-lh.googleusercontent.com/e6-dZlTM-gJ2sFxFFs3X15O84HEv6jc9PQGgHtVTn7FP6lUXeEAkDl9v4RfVOwbSuQ=w480-h960-rw",
+    "updateUrl": "https://api.github.com/repos/shub39/echo-genius-extension/releases"
+  },
+  {
+    "id": "kugou_lyrics",
+    "type": "lyrics",
+    "name": "Kugou",
+    "subtitle": "View lyrics with Kugou on Echo",
+    "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e9/KuGou_app_icon.png",
+    "updateUrl": "https://api.github.com/repos/shub39/echo-kugou-extension/releases"
+  },
+  {
+    "id": "lastfm",
+    "type": "tracker",
+    "name": "Lastfm",
+    "subtitle": "Sync the music you play on Echo with Lastfm",
+    "iconUrl": "https://i.imgur.com/ArKIJYv.png",
+    "updateUrl": "https://api.github.com/repos/rebelonion/echo-lastfm/releases"
+  },
+  {
+    "id": "lrclib_lyrics",
+    "type": "lyrics",
+    "name": "Lrclib",
+    "subtitle": "View lyrics with Lrclib on Echo",
+    "iconUrl": "https://lrclib.net/assets/lrclib-370c57eb.png",
+    "updateUrl": "https://api.github.com/repos/shub39/echo-lrclib-extension/releases"
+  },
+  {
+    "id": "lyricstranslator",
+    "type": "lyrics",
+    "name": "Lyrics Translator",
+    "subtitle": "Translate lyrics with Lyrics Translator on Echo",
+    "iconUrl": "https://i.imgur.com/Lv07pqy.png",
+    "updateUrl": "https://api.github.com/repos/rebelonion/echo-lyrics-translator/releases"
+  },
+  {
+    "id": "musixmatch_lyrics",
+    "type": "lyrics",
+    "name": "Musixmatch",
+    "subtitle": "View lyrics with Musixmatch on Echo",
+    "iconUrl": "https://yt3.g nc9PQGgHtVTn7FP6lUXeEAkDl9v4RfVOwbSuQ=w480-h960-rw",
+    "updateUrl": "https://api.github.com/repos/shub39/echo-musixmatch-extension/releases"
+  },
+  {
+    "id": "spotify",
+    "type": "music",
+    "name": "Spotify",
+    "subtitle": "Play music from Spotify on Echo",
+    "iconUrl": "https://static-00.iconduck.com/assets.00/spotify-icon-512x512-6qhm38iz.png",
+    "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-spotify-extension/releases"
+  },
+  {
+    "id": "Tunein",
+    "type": "music",
+    "name": "Tunein",
+    "subtitle": "Play radio from Tunein on Echo",
+    "iconUrl": "https://github.com/GrimXer0/EchoTuneIn-extension/blob/main/62e134487fe3599fdd46ecb9-1734379316%20(1)-modified.png?raw=true",
+    "updateUrl": "https://api.github.com/repos/GrimXer0/EchoTuneIn-extension/releases"
+  },
+  {
+    "id": "youtube-music",
+    "type": "music",
+    "name": "Youtube Music",
+    "subtitle": "Play music from Youtube on Echo",
+    "iconUrl": "https://music.youtube.com/img/favicon_144.png",
+    "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-youtube-extension/releases"
+  }
+]

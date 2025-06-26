@@ -60,7 +60,7 @@
     "type": "music",
     "name": "iHeartRadio",
     "subtitle": "Play music from iHeartRadio on Echo",
-    "iconUrl": "https://images.squarespace-cdn.com/content/v1/54becebee4b05d09416fe7e4/1739919895584-FA5D26KGPS8R5TG87BPX/iHR_primary_Color.png",
+    "iconUrl": "https://files.catbox.moe/52dxag.jpg",
     "updateUrl": "https://api.github.com/repos/m-tki/echo-iheart-extension/releases"
   },
   {

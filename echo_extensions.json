@@ -56,6 +56,14 @@
     "updateUrl": "https://api.github.com/repos/shub39/echo-genius-extension/releases"
   },
   {
+    "id": "iheartradio",
+    "type": "music",
+    "name": "iHeartRadio",
+    "subtitle": "Play music from iHeartRadio on Echo",
+    "iconUrl": "https://images.squarespace-cdn.com/content/v1/54becebee4b05d09416fe7e4/1739919895584-FA5D26KGPS8R5TG87BPX/iHR_primary_Color.png",
+    "updateUrl": "https://api.github.com/repos/m-tki/echo-iheart-extension/releases"
+  },
+  {
     "id": "kugou_lyrics",
     "type": "lyrics",
     "name": "Kugou",
@@ -92,7 +100,7 @@
     "type": "lyrics",
     "name": "Musixmatch",
     "subtitle": "View lyrics with Musixmatch on Echo",
-    "iconUrl": "https://yt3.g nc9PQGgHtVTn7FP6lUXeEAkDl9v4RfVOwbSuQ=w480-h960-rw",
+    "iconUrl": "https://yt3.googleusercontent.com/ytc/AIdro_lBFnWS0XsOc_PbUCpWpTTUtcUa3CJNO8oXqrjnc9IA_A4=s176-c-k-c0x00ffffff-no-rj-mo",
     "updateUrl": "https://api.github.com/repos/shub39/echo-musixmatch-extension/releases"
   },
   {

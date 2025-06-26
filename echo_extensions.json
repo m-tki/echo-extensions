@@ -100,7 +100,7 @@
     "type": "lyrics",
     "name": "Musixmatch",
     "subtitle": "View lyrics with Musixmatch on Echo",
-    "iconUrl": "https://yt3.googleusercontent.com/ytc/AIdro_lBFnWS0XsOc_PbUCpWpTTUtcUa3CJNO8oXqrjnc9IA_A4=s176-c-k-c0x00ffffff-no-rj-mo",
+    "iconUrl": "https://files.catbox.moe/heyxop.jpg",
     "updateUrl": "https://api.github.com/repos/shub39/echo-musixmatch-extension/releases"
   },
   {
@@ -108,7 +108,7 @@
     "type": "music",
     "name": "Spotify",
     "subtitle": "Play music from Spotify on Echo",
-    "iconUrl": "https://static-00.iconduck.com/assets.00/spotify-icon-512x512-6qhm38iz.png",
+    "iconUrl": "https://files.catbox.moe/212opw.png",
     "updateUrl": "https://api.github.com/repos/brahmkshatriya/echo-spotify-extension/releases"
   },
   {

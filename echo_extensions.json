@@ -64,6 +64,14 @@
     "updateUrl": "https://api.github.com/repos/m-tki/echo-iheart-extension/releases"
   },
   {
+    "id": "radio_browser",
+    "type": "music",
+    "name": "Radio Browser",
+    "subtitle": "Streams from Radio Browser on Echo",
+    "iconUrl": "https://icons.duckduckgo.com/ip3/www.radio-browser.info.ico",
+    "updateUrl": "https://api.github.com/repos/m-tki/echo-radiobrowser-extension/releases"
+  },
+  {
     "id": "iptv_org",
     "type": "music",
     "name": "IPTV-org",
